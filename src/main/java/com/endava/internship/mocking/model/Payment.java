@@ -14,13 +14,14 @@ public class Payment {
     private String message;
 
     public Payment(Integer userId, Double amount, String message) {
-        this (UUID.randomUUID(), userId, amount, message);
+        this(UUID.randomUUID(), userId, amount, message);
     }
 
     private Payment(UUID paymentId, Integer userId, Double amount, String message) {
         this.paymentId = paymentId;
         this.userId = userId;
         this.amount = amount;
+        this.message = message;
     }
 
     public static Payment copyOf(Payment originalPayment) {
@@ -39,6 +40,10 @@ public class Payment {
         return amount;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     public void setMessage(String message) {
         this.message = message;
     }
@@ -53,8 +58,8 @@ public class Payment {
         }
         Payment payment = (Payment) o;
         return Objects.equals(paymentId, payment.paymentId) &&
-            Objects.equals(userId, payment.userId) &&
-            Objects.equals(amount, payment.amount);
+                Objects.equals(userId, payment.userId) &&
+                Objects.equals(amount, payment.amount);
     }
 
     @Override
